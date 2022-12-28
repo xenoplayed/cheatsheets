@@ -21,3 +21,8 @@
     sudo mount /dev/sda1 /media/usb     # mount 
     sudo umount /media/usb              # unmount
     sudo mount -a                       # mount partitions from /etc/fstab
+
+### benchmark write- / read-speed
+    sync; time dd if=/dev/zero of=./test.tmp bs=500K count=1024; time sync
+    dd if=./test.tmp of=/dev/null bs=500K count=1024
+    rm ./test.tmp
