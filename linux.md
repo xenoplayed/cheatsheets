@@ -17,7 +17,7 @@
     sudo mkfs.ext4 /dev/sda1    # format partition /dev/sda1 with ext4     
     
 ### mount / unmount
-    sudo mkdir /media/usb; sudo chown myuser /media/usb    # chown needed before mounting, to allow write access without sudo
+    sudo mkdir /media/usb; sudo chown $USER:$USER /media/usb; ls -lah /media     # chown needed before mounting, to allow write access to $USER
     sudo mount /dev/sda1 /media/usb     # mount 
     sudo umount /media/usb              # unmount
     sudo mount -a                       # mount partitions from /etc/fstab
