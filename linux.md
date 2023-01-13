@@ -18,7 +18,8 @@
     
 ### mount / unmount
     sudo mkdir /media/usb; sudo chown $USER:$USER /media/usb; ls -lah /media     # chown needed before mounting, to allow write access to $USER
-    sudo mount /dev/sda1 /media/usb     # mount 
+    sudo mount /dev/sda1 /media/usb     # mount
+    sudo mount /dev/sda1 /media/usb -o uid=pi,gid=pi
     sudo umount /media/usb              # unmount
     sudo mount -a                       # mount partitions from /etc/fstab
 
