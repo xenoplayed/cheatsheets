@@ -7,6 +7,9 @@
 ### disk / storage infos
     sudo blkid # get UUID / PARTUUID
 
+### memory
+    free        # Display amount of free and used memory in the system
+
 ### partitioning
     sudo fdisk -l               # show disks and paritions
     sudo fdisk /dev/sda         # start partitioning
