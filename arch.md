@@ -55,7 +55,11 @@
     ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
     hwclock --systohc
     
-    pacman -S grub efibootmgr dosfstools mtools
+    mount /dev/sda2 /boot/efi
+    
+    pacman -S grub efibootmgr dosfstools mtools ntfs-3g
+    
+    reboot
     
     nano /etc/default/grub
     
