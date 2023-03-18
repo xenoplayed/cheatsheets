@@ -72,5 +72,9 @@
     grub-mkconfig -o /boot/grub/grub.cfg
     
     
+    pacman -S xorg-server xorg-xinit
+    lspci |grep VGA
+    pacman -S nvidia-lts    # if linux-lts kernel is used, or nvidia if linux kernel is used
+    
     
     
