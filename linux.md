@@ -33,5 +33,6 @@
     
 # networking
 
-    ip addr     # interface config
-    ip route    # routing information
+    ip addr         # interface config
+    ip route        # routing config
+    netstat -nr     # kernel ip routing table
