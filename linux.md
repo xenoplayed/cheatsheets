@@ -31,6 +31,18 @@
     dd if=./test.tmp of=/dev/null bs=500K count=1024
     rm ./test.tmp
     
+# services
+
+    systemctl list-units [PATTERN]      # list units [matching pattern]
+    systemctl list-timers [PATTERN]     # list timers [matching pattern]
+    systemctl list-sockets [PATTERN]    # list sockets [matching pattern]
+    systemctl start UNITNAME
+    systemctl stop UNITNAME
+    systemctl restart UNITNAME
+    systemctl status UNITNAME
+    
+    
+
 # networking
 
     ip addr         # interface config
