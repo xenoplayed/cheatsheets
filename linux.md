@@ -30,3 +30,8 @@
     sync; time dd if=/dev/zero of=./test.tmp bs=500K count=1024; time sync
     dd if=./test.tmp of=/dev/null bs=500K count=1024
     rm ./test.tmp
+    
+# networking
+
+    ip addr     # interface config
+    ip route    # routing information
