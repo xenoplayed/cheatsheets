@@ -48,3 +48,7 @@
     ip addr         # interface config
     ip route        # routing config
     netstat -nr     # kernel ip routing table
+    
+# others
+
+    fallocate -l 450M file.dat # Preallocate space to, or deallocate space from a file.
