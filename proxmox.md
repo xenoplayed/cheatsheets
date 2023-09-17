@@ -55,8 +55,6 @@ sudo shutdown -h now
 # convert into template
 qm template 100
 
-```
-
 pveum role add TFUser -privs \
     "VM.Allocate VM.Clone \
     VM.Config.CDROM VM.Config.CPU \
@@ -71,3 +69,31 @@ pveum user add terraform@pve
 pveum aclmod / -user terraform@pve -role TFUser
 pveum user token add terraform@pve terraform-token --privsep=0
 
+## other example
+# TODO: add commands to install qemu-guest-agent in cloud-init image
+
+# create vm
+sudo qm create 9000 --name "ubuntu-2204-cloudinit-template" --memory 2048 --cores 2 --net0 virtio,bridge=vmbr0
+
+# import iso image
+sudo qm importdisk 9000 ubuntu-22.04-minimal-cloudimg-amd64.img DataStorage
+
+#
+sudo qm set 9000 --scsihw virtio-scsi-pci --scsi0 DataStorage:vm-9000-disk-0
+sudo qm set 9000 --boot c --bootdisk scsi0
+sudo qm set 9000 --ide2 DataStorage:cloudinit
+sudo qm set 9000 --serial0 socket --vga serial0
+sudo qm set 9000 --agent enabled=1
+
+sudo qm template 9000
+
+sudo qm clone 9000 999 --name test-clone-cloud-init
+
+sudo qm set 999 --sshkey ~/.ssh/id_rsa.pub
+
+sudo qm set 999 --ipconfig0 ip=192.168.177.199/24,gw=192.168.178.1
+
+sudo qm start 999
+
+ssh ubuntu@10.98.1.96
+```
