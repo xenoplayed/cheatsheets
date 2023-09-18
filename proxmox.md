@@ -69,8 +69,19 @@ pveum user add terraform@pve
 pveum aclmod / -user terraform@pve -role TFUser
 pveum user token add terraform@pve terraform-token --privsep=0
 
-## other example
-# TODO: add commands to install qemu-guest-agent in cloud-init image
+# other example
+## download cloud-init image
+
+## install tools into image
+docker run --rm -it -v $(pwd):/downloads ubuntu bash
+
+## install libguestfs in docker
+apt update && apt install libguestfs-tools linux-image-generic
+
+## install qemu-guest-agent in image
+virt-customize -a /downloads/ubuntu-22.04-minimal-cloudimg-amd64.img --install qemu-guest-agent
+
+## copy image to prommox host
 
 # create vm
 sudo qm create 9000 --name "ubuntu-2204-cloudinit-template" --memory 2048 --cores 2 --net0 virtio,bridge=vmbr0
