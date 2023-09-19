@@ -69,7 +69,10 @@ pveum user add terraform@pve
 pveum aclmod / -user terraform@pve -role TFUser
 pveum user token add terraform@pve terraform-token --privsep=0
 
-# other example (inspired by https://austinsnerdythings.com/2021/08/30/how-to-create-a-proxmox-ubuntu-cloud-init-image/)
+# other example
+sources:
+- https://austinsnerdythings.com/2021/08/30/how-to-create-a-proxmox-ubuntu-cloud-init-image/
+- https://www.thomas-krenn.com/de/wiki/Terraform_mit_Proxmox_VE_Tutorial
 ## download cloud-init image
 
 ## install tools into image
