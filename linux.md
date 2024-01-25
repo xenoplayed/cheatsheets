@@ -51,7 +51,8 @@
 
     ip addr         # interface config
     ip route        # routing config
-    netstat -nr     # kernel ip routing table
+    netstat -nr     # don't resolve names, kernel ip routing table
+    netstat -ntlp   # don't resolve names, only tcp sockets, list, display programe name for sockets
 
 # others
 
