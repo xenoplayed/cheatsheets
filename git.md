@@ -23,7 +23,8 @@ git branch -d branchname                            # delete fully merged branch
 git commit --allow-empty # allow empty commit
 git reset --soft # keep your files, and stage all changes back automatically
 git reset --hard # completely destroy any changes and remove them from the local directory.
-git reset --mixed # (default) keeps all files the same but unstages the changes. 
+git reset --mixed # (default) keeps all files the same but unstages the changes.
+git show --pretty="" --name-only HEAD|COMMIT_ID # list of files changed in HEAD/COMMIT
 ```
 
 ## git config
