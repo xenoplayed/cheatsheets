@@ -110,4 +110,8 @@ sudo qm set 999 --ipconfig0 ip=192.168.177.199/24,gw=192.168.178.1
 sudo qm start 999
 
 ssh ubuntu@10.98.1.96
+
+# kill vms from terminal (if GUI is not responding)
+ps -aux | grep [VM-ID]
+kill -9 [PROCESS_ID]
 ```
