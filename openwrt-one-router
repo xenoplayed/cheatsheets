@@ -1,2 +1,48 @@
 ## Package manager
 https://openwrt.org/docs/guide-user/storage/fstab
+
+Configure SSD
+https://forum.openwrt.org/t/installing-nvme-m-2-on-banana-r4/225297/27
+
+    Install fdisk
+    opkg update
+    opkg install fdisk
+
+    Delete existing partition:
+    fdisk /dev/nvme0n1
+    Press d to delete the current partition
+    Press w to write changes and exit fdisk
+
+    Create a New partition:
+    Relaunch fdisk /dev/nvme0n1
+    Press n to create a new partition. Follow the steps to use the default start and specify partition size (e.g. +1000GB)
+    Press t to change partition type - default should be ext4 (change if needed)
+    Press w to write changes and exit fdisk
+
+    Alternative: Install cfdisk
+    opkg update
+    opkg install cfdisk
+
+    df -h to verify partition.
+
+    Format the partition:
+    mkfs.ext4 /dev/nvme0n1p1
+
+    Create mount point:
+    mkdir -p /mnt/ssd
+
+    Configure fstab for Auto-mount:
+    block info and copy the UUID of your SSD
+
+    Configure fstab for Auto-mount:
+    nano /etc/config/fstab
+    Add to the end:
+
+    config mount
+            option target '/mnt/ssd'
+            option uuid 'add your UUID'
+            option enabled '1'
+
+    save and exit
+    reboot
+
