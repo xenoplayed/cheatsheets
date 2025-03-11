@@ -21,3 +21,13 @@ az webapp
     az webapp config connection-string set --name tailspin-space-game-web-dev-$webappsuffix --resource-group tailspin-space-game-rg --settings "DefaultConnection=$DB_CONNECTION_STRING" --connection-string-type SQLAzure
     az webapp config connection-string set --name tailspin-space-game-web-test-$webappsuffix --resource-group tailspin-space-game-rg --settings "DefaultConnection=$DB_CONNECTION_STRING" --connection-string-type SQLAzure
     az webapp config connection-string set --name tailspin-space-game-web-staging-$webappsuffix --resource-group tailspin-space-game-rg --settings "DefaultConnection=$DB_CONNECTION_STRING" --connection-string-type SQLAzure
+
+pipelines
+
+Delete all jobs in given pipeline ID with status "notStarted"
+```bash
+#!/bin/bash
+for build_id in $(az pipelines build list --status notStarted --definition-ids 3585 --query "[].id" -o tsv); do
+    az pipelines build cancel --build-id $build_id
+done
+```

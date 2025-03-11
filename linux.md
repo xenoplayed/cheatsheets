@@ -78,3 +78,5 @@ fallocate -l 450M file.dat      # Preallocate space to, or deallocate space from
 
 find -maxdepth 1 -type d -exec du -h -d 0 {} \; # used dir space
 ```
+
+https://www.baeldung.com/linux/list-by-size
